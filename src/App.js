@@ -1,80 +1,79 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import Display from './Components/Display';
-import Keypad from './Components/Keypad';
 import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
-class App extends Component {
-	constructor() {
-		super();
+function App() {
+	const [result, setResult] = useState("");
 
-		this.state = {
-			result: ""
-		}
-	}
-	
-	calculate = () => {
+	const calculate = () => {
 		try {
-			this.setState(
-				{
-					result: (eval(this.state.result) || "") + ""
-				}
-			)
+			let res = (eval(result) || "") + "";
+			setResult(res);
 		}
 		catch (e) {
 			alert("Invalid syntax");
-			this.setState(
-				{
-					result: ""
-				}
-			)
+			setResult("");
 		}
 	}
 
-	reset = () => {
-		this.setState(
-			{
-				result: ""
-			}
-		)	
+	const reset = () => {
+		setResult("");
 	}
 
-	backspace = () => {
-		this.setState(
-			{
-				result: this.state.result.slice(0, -1)
-			}
-		)
+	const backspace = () => {
+		setResult(result.slice(0, -1))
 	}
 
-	onClick = button => {
+	const handleClick = button => {
 		if (button === "C") {
-			this.reset ();
+			reset();
 		}
 		else if (button === "=") {
-			this.calculate ();
+			calculate();
 		}
 		else if (button === "CE") {
-			this.backspace ();
+			backspace();
 		}
 		else {
-			this.setState(
-				{
-					result: this.state.result += button
-				}
-			)
+			let res = result + button;
+			setResult(res);
 		}
 	}
 
-	render () {
 	return (
-		<div class="container h-100 d-flex flex-column align-items-center">
-	    	<h1>Calculator</h1>
-	    	<Display result = {this.state.result} />
-	    	<Keypad onClick = {this.onClick} />
-	  	</div>
+		<div className="container h-100 d-flex flex-column align-items-center">
+			<h1>Calculator</h1>
+			<Display result={result} />
+
+			<div id="keypad" className="w-100">
+				<button name="(" onClick={e => handleClick(e.target.name)}>(</button>
+				<button name=")" onClick={e => handleClick(e.target.name)}>)</button>
+				<button name="." onClick={e => handleClick(e.target.name)}>.</button>
+				<button name="CE" onClick={e => handleClick(e.target.name)}>CE</button>
+
+				<button name="9" onClick={e => handleClick(e.target.name)}>9</button>
+				<button name="8" onClick={e => handleClick(e.target.name)}>8</button>
+				<button name="7" onClick={e => handleClick(e.target.name)}>7</button>
+				<button name="*" onClick={e => handleClick(e.target.name)}>x</button>
+
+				<button name="6" onClick={e => handleClick(e.target.name)}>6</button>
+				<button name="5" onClick={e => handleClick(e.target.name)}>5</button>
+				<button name="4" onClick={e => handleClick(e.target.name)}>4</button>
+				<button name="-" onClick={e => handleClick(e.target.name)}>-</button>
+
+				<button name="3" onClick={e => handleClick(e.target.name)}>3</button>
+				<button name="2" onClick={e => handleClick(e.target.name)}>2</button>
+				<button name="1" onClick={e => handleClick(e.target.name)}>1</button>
+				<button name="+" onClick={e => handleClick(e.target.name)}>+</button>
+
+				<button name="C" onClick={e => handleClick(e.target.name)}>C</button	>
+				<button name="0" onClick={e => handleClick(e.target.name)}>0</button>
+				<button name="/" onClick={e => handleClick(e.target.name)}>%</button>
+				<button name="=" onClick={e => handleClick(e.target.name)}>=</button>
+			</div>
+		</div>
 	);
-	}
 }
 
 export default App;
-	
