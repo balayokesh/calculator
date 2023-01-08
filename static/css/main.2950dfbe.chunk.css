@@ -1,0 +1,2 @@
+*{font-family:sans-serif}#parent{background:linear-gradient(#f3eeee,#2a82bd)}#keypad{display:grid;grid-template-columns:70px 70px 70px 70px;grid-gap:1px}#keypad>button{font-size:20px;height:65px;border-radius:15px}#display{height:70px;border:1px solid grey;border-radius:15px;font-size:2em;width:285px;margin-bottom:5px}button{border:1px solid grey}#calculator{border-radius:15px}
+/*# sourceMappingURL=main.2950dfbe.chunk.css.map */
