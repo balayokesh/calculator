@@ -4,7 +4,7 @@
 https://balayokesh.github.io/calculator/
 
 ### Screenshot:
-![image](https://user-images.githubusercontent.com/59578892/132101218-871cb6d1-7e29-4fc2-9d42-14d50ba35d2c.png)
+![image](https://user-images.githubusercontent.com/59578892/212706327-aa2d6d16-3a2a-454c-8cbe-3686b799f227.png)
 
 ### Tech stack:
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" title='ReactJS' alt='ReactJS' width='50' />
